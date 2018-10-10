@@ -1,8 +1,9 @@
 export {
   AccountPanel,
+  AccountRegisterPanel,
   AccountPanelLogo,
   AccountPanelTitle,
   AccountPanelDescription,
   AccountPanelError,
-  AccountPanelLink,
-} from './AccountPanel';
+  AccountPanelLink
+} from "./AccountPanel";

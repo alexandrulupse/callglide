@@ -33,8 +33,43 @@ export const AccountPanelLink = styled(Link)`
 
 export const AccountPanel = styled.div`
   position: absolute;
+  top: 40%;
   left: 50%;
   width: 380px;
+  transform: translate(-50%, -50%);
+
+  ${props =>
+    props.isLoading &&
+    css`
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        background: ${transparentize(0.05, "#fff")};
+      }
+
+      &:after {
+        position: absolute;
+        content: "";
+        top: 50%;
+        left: 50%;
+        z-index: 1000;
+        margin: -13px 0 0 -13px;
+        ${loading("26px")};
+      }
+    `};
+`;
+
+export const AccountRegisterPanel = styled.div`
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  width: 380px;
+  transform: translate(-50%, -50%);
 
   ${props =>
     props.isLoading &&

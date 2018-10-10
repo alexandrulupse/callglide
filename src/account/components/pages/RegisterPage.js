@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { register, resetRegister } from "../../ducks";
-import { AccountPanel } from "../styled";
+import { AccountRegisterPanel } from "../styled";
 import { RegisterForm } from "../forms";
 
 class RegisterPage extends PureComponent {
@@ -18,9 +18,9 @@ class RegisterPage extends PureComponent {
     const { isRegistering } = this.props;
 
     return (
-      <AccountPanel isLoading={isRegistering}>
+      <AccountRegisterPanel isLoading={isRegistering}>
         <RegisterForm onSubmit={this.onSubmit} />
-      </AccountPanel>
+      </AccountRegisterPanel>
     );
   }
 }
