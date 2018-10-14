@@ -3,16 +3,14 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { Switch, Route, Redirect } from "react-router";
 import { ConnectedRouter } from "react-router-redux";
-import { ThemeProvider } from "styled-components";
 import { store, history } from "./store";
-import { injectBaseStyles, theme } from "./core/styles";
 import { AuthRoute, Account } from "./account/components";
 import { DashboardPageResolver } from "./dashboard/components";
 import { Page } from "./common/components";
 import registerAuthInterceptor from "./account/services/registerAuthInterceptor";
 import registerServiceWorker from "./registerServiceWorker";
+import "semantic-ui-css/semantic.min.css";
 
-injectBaseStyles();
 registerAuthInterceptor();
 const AppRouter = () => (
   <Page>
@@ -22,7 +20,7 @@ const AppRouter = () => (
 );
 
 render(
-  <ThemeProvider theme={theme}>
+  <div style={{ height: "100%" }}>
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <Switch>
@@ -32,7 +30,7 @@ render(
         </Switch>
       </ConnectedRouter>
     </Provider>
-  </ThemeProvider>,
+  </div>,
   document.getElementById("root")
 );
 

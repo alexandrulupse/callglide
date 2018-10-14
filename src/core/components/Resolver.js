@@ -1,17 +1,23 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import { push } from 'react-router-redux';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
+import { push } from "react-router-redux";
 
 class Resolver extends PureComponent {
   state = {
-    resolved: false,
+    resolved: false
   };
 
   componentDidMount() {
     this.isComponentMounted = true;
-    const { resolve, redirect, onSuccess, onError, redirectOnError } = this.props;
+    const {
+      resolve,
+      redirect,
+      onSuccess,
+      onError,
+      redirectOnError
+    } = this.props;
 
     resolve()
       .then(result => {
@@ -33,8 +39,16 @@ class Resolver extends PureComponent {
   isComponentMounted = false;
 
   render() {
-    const { successComponent: SuccessComponent, loadingComponent: LoadingComponent, successProps } = this.props;
-    return this.state.resolved ? <SuccessComponent {...successProps} /> : <LoadingComponent />;
+    const {
+      successComponent: SuccessComponent,
+      loadingComponent: LoadingComponent,
+      successProps
+    } = this.props;
+    return this.state.resolved ? (
+      <SuccessComponent {...successProps} />
+    ) : (
+      <LoadingComponent />
+    );
   }
 }
 
@@ -46,18 +60,18 @@ Resolver.propTypes = {
   redirectOnError: PropTypes.string,
   successComponent: PropTypes.func.isRequired,
   loadingComponent: PropTypes.func.isRequired,
-  successProps: PropTypes.object,
+  successProps: PropTypes.object
 };
 
 Resolver.defaultProps = {
   onSuccess: undefined,
   onError: undefined,
   redirectOnError: undefined,
-  successProps: undefined,
+  successProps: undefined
 };
 
 const mapDispatchToProps = dispatch => ({
-  redirect: URL => dispatch(push(URL)),
+  redirect: URL => dispatch(push(URL))
 });
 
 export default withRouter(connect(undefined, mapDispatchToProps)(Resolver));

@@ -1,21 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
-import { ButtonSet, Button, Panel } from "../../../core/components/styled";
-import { Input, Checkbox } from "../../../core/components";
+import { Link } from "react-router-dom";
 import {
-  AccountPanelLogo,
-  AccountPanelTitle,
-  AccountPanelLink
-} from "../styled";
+  Input,
+  Button,
+  Container,
+  Checkbox,
+  Header,
+  Message
+} from "semantic-ui-react";
 import { isRequired, isPhone } from "../../../utils/services/validator";
 import focusFirstInvalidField from "../../../utils/services/focusFirstInvalidField";
 
 const RegisterForm = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit} noValidate>
-    <AccountPanelLogo />
-    <AccountPanelTitle>Register to Callglide</AccountPanelTitle>
-    <Panel fluid padding="small">
+    <Header>Register to Callglide</Header>
+    <Container fluid padding="small">
       <Field
         name="firstName"
         component={Input}
@@ -68,9 +69,12 @@ const RegisterForm = ({ handleSubmit }) => (
         validate={[isRequired, isPhone]}
       />
 
-      <AccountPanelLink to="/account/terms-and-conditions">
-        View Terms and Conditions
-      </AccountPanelLink>
+      <Message>
+        {" "}
+        <Link to="/account/terms-and-conditions">
+          View Terms and Conditions
+        </Link>
+      </Message>
 
       <Field
         name="termsAndConditions"
@@ -79,12 +83,10 @@ const RegisterForm = ({ handleSubmit }) => (
         validate={[isRequired]}
       />
 
-      <ButtonSet margin="medium">
-        <Button color="primary" type="submit">
-          Register
-        </Button>
-      </ButtonSet>
-    </Panel>
+      <Button color="primary" type="submit">
+        Register
+      </Button>
+    </Container>
   </form>
 );
 

@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import RouterPropTypes from "react-router-prop-types";
 import { withRouter } from "react-router";
-import { Page as PageContainer } from "./styled";
+import { Container } from "semantic-ui-react";
 import NavigationBar from "./NavigationBar";
 
 class Page extends PureComponent {
@@ -13,12 +13,11 @@ class Page extends PureComponent {
   }
 
   render() {
-    console.log("children", this.props.children);
     return (
-      <PageContainer>
+      <Container>
         <NavigationBar />
         {this.props.children}
-      </PageContainer>
+      </Container>
     );
   }
 }

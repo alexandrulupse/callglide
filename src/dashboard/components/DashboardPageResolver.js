@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from "react";
+import { Loader } from "semantic-ui-react";
 // import PropTypes from "prop-types";
 import { Resolver } from "../../core/components";
-import { PageLoading } from "../../common/components/styled";
 import DashboardPage from "./DashboardPage";
 
 class DashboardPageResolver extends PureComponent {
@@ -10,11 +10,12 @@ class DashboardPageResolver extends PureComponent {
   };
 
   render() {
+    console.log("Resolver??", Resolver);
     return (
       <Fragment>
         <Resolver
           successComponent={DashboardPage}
-          loadingComponent={PageLoading}
+          loadingComponent={() => <Loader size="large">Loading</Loader>}
           resolve={this.loadDependencies}
         />
       </Fragment>

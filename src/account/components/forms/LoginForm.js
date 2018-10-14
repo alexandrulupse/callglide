@@ -1,55 +1,66 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
-import { ButtonSet, Button, Panel } from "../../../core/components/styled";
-import { Input } from "../../../core/components";
+import { Link } from "react-router-dom";
 import {
-  AccountPanelError,
-  AccountPanelLink,
-  AccountPanelLogo,
-  AccountPanelTitle
-} from "../styled";
+  Button,
+  Container,
+  Header,
+  Message,
+  Grid,
+  Segment,
+  Form
+} from "semantic-ui-react";
 import { isRequired } from "../../../utils/services/validator";
 import focusFirstInvalidField from "../../../utils/services/focusFirstInvalidField";
 
 const LoginForm = ({ isLoginFailed, handleSubmit }) => (
-  <form onSubmit={handleSubmit} noValidate>
-    <AccountPanelLogo />
-    <AccountPanelTitle>Log in to Callglide</AccountPanelTitle>
-    <Panel fluid padding="small">
-      <Field
-        name="email"
-        component={Input}
-        label="Email"
-        type="text"
-        validate={[isRequired]}
-      />
-      <Field
-        name="password"
-        component={Input}
-        label="Password"
-        type="password"
-        validate={[isRequired]}
-      />
+  <Grid textAlign="center" style={{ height: "100%" }} verticalAlign="middle">
+    <Grid.Column style={{ maxWidth: 450 }}>
+      <form onSubmit={handleSubmit} noValidate>
+        <Segment stacked>
+          <Header>Log in to Callglide</Header>
+          <Container fluid>
+            <Field
+              fluid
+              name="email"
+              component={Form.Input}
+              icon="user"
+              iconPosition="left"
+              placeholder="E-mail address"
+              type="text"
+              validate={[isRequired]}
+            />
+            <Field
+              fluid
+              name="password"
+              component={Form.Input}
+              icon="lock"
+              iconPosition="left"
+              placeholder="Password"
+              type="password"
+              validate={[isRequired]}
+            />
 
-      {isLoginFailed && (
-        <AccountPanelError>Invalid login credentials</AccountPanelError>
-      )}
+            {isLoginFailed && <Message>Invalid login credentials</Message>}
 
-      <AccountPanelLink to="/account/forgot-password">
-        Forgot your password?
-      </AccountPanelLink>
+            <Message>
+              <Link to="/account/forgot-password">Forgot your password?</Link>
+            </Message>
 
-      <ButtonSet margin="medium">
-        <Button color="primary" type="submit">
-          Login
-        </Button>
-      </ButtonSet>
-      <AccountPanelLink to="/account/register">
-        Not yet a user? Register here!
-      </AccountPanelLink>
-    </Panel>
-  </form>
+            <Button.Group fluid>
+              <Button color="primary" type="submit">
+                Login
+              </Button>
+            </Button.Group>
+            <Message to="/account/register">
+              Not yet a user? Register <Link to="/account/register">here</Link>!
+            </Message>
+          </Container>
+        </Segment>
+      </form>
+    </Grid.Column>
+  </Grid>
 );
 
 LoginForm.propTypes = {
