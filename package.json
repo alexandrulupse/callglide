@@ -34,7 +34,9 @@
     "semantic-ui-react": "^0.82.5",
     "styled-components": "^2.4.0",
     "styled-normalize": "^2.2.1",
-    "validator": "^9.2.0"
+    "validator": "^9.2.0",
+    "babel-eslint": "^8.2.6",
+    "eslint": "^4.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
