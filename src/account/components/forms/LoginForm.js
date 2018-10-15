@@ -9,7 +9,8 @@ import {
   Message,
   Grid,
   Segment,
-  Form
+  Form,
+  Input
 } from "semantic-ui-react";
 import { isRequired } from "../../../utils/services/validator";
 import focusFirstInvalidField from "../../../utils/services/focusFirstInvalidField";
@@ -18,6 +19,7 @@ const LoginForm = ({ isLoginFailed, handleSubmit }) => (
   <Grid textAlign="center" style={{ height: "100%" }} verticalAlign="middle">
     <Grid.Column style={{ maxWidth: 450 }}>
       <form onSubmit={handleSubmit} noValidate>
+        <Input placeholder="test" />
         <Segment stacked>
           <Header>Log in to Callglide</Header>
           <Container fluid>
@@ -53,12 +55,12 @@ const LoginForm = ({ isLoginFailed, handleSubmit }) => (
                 Login
               </Button>
             </Button.Group>
-            <Message to="/account/register">
-              Not yet a user? Register <Link to="/account/register">here</Link>!
-            </Message>
           </Container>
         </Segment>
       </form>
+      <Message to="/account/register">
+        Not yet a user? Register <Link to="/account/register">here</Link>!
+      </Message>
     </Grid.Column>
   </Grid>
 );

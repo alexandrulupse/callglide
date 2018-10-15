@@ -1,12 +1,12 @@
-import update from 'immutability-helper';
-import { push } from 'react-router-redux';
-import * as auth from '../services/auth';
+import update from "immutability-helper";
+import { push } from "react-router-redux";
+import * as auth from "../services/auth";
 
 // Actions
-const START = 'account/login/START';
-const COMPLETE = 'account/login/COMPLETE';
-const FAIL = 'account/login/FAIL';
-const RESET = 'account/login/RESET';
+const START = "account/login/START";
+const COMPLETE = "account/login/COMPLETE";
+const FAIL = "account/login/FAIL";
+const RESET = "account/login/RESET";
 
 // Initial state
 const user = auth.getUser();
@@ -14,7 +14,7 @@ const initialState = {
   isLoginFailed: false,
   isLoggingIn: false,
   isLoggedIn: !!user,
-  user,
+  user
 };
 
 // Reducer
@@ -25,8 +25,8 @@ export const reducer = (state = initialState, action) => {
         $merge: {
           isLoginFailed: false,
           isLoggingIn: true,
-          isLoggedIn: false,
-        },
+          isLoggedIn: false
+        }
       });
 
     case COMPLETE:
@@ -35,8 +35,8 @@ export const reducer = (state = initialState, action) => {
           isLoginFailed: false,
           isLoggingIn: false,
           isLoggedIn: true,
-          user: action.user,
-        },
+          user: action.user
+        }
       });
 
     case FAIL:
@@ -44,16 +44,16 @@ export const reducer = (state = initialState, action) => {
         $merge: {
           isLoginFailed: true,
           isLoggingIn: false,
-          isLoggedIn: false,
-        },
+          isLoggedIn: false
+        }
       });
 
     case RESET:
       return update(state, {
         $merge: {
           isLoginFailed: false,
-          isLoggingIn: false,
-        },
+          isLoggingIn: false
+        }
       });
 
     default:
@@ -63,16 +63,16 @@ export const reducer = (state = initialState, action) => {
 
 // Action creators
 const startLogin = () => ({
-  type: START,
+  type: START
 });
 
 const completeLogin = user => ({
   type: COMPLETE,
-  user,
+  user
 });
 
 const failLogin = () => ({
-  type: FAIL,
+  type: FAIL
 });
 
 export const login = (email, password) => dispatch => {
@@ -81,11 +81,11 @@ export const login = (email, password) => dispatch => {
     .login(email, password)
     .then(user => {
       dispatch(completeLogin(user));
-      dispatch(push('/'));
+      dispatch(push("/"));
     })
     .catch(() => dispatch(failLogin()));
 };
 
 export const resetLogin = () => ({
-  type: RESET,
+  type: RESET
 });
