@@ -9,14 +9,14 @@ const RequestPasswordResetForm = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit} noValidate>
     <Header>Forgot your password?</Header>
     <Message>
-      Enter your email address and we’ll send you instructions to reset your
+      Enter your user name address and we’ll send you instructions to reset your
       password
     </Message>
 
     <Field
-      name="email"
+      name="userName"
       component={Input}
-      label="Email"
+      label="User name"
       type="text"
       validate={[isRequired]}
     />

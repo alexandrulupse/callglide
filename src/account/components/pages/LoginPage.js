@@ -10,8 +10,8 @@ class LoginPage extends PureComponent {
     this.props.resetLogin();
   }
 
-  onSubmit = ({ email, password }) => {
-    this.props.login(email, password);
+  onSubmit = ({ userName, password }) => {
+    this.props.login(userName, password);
   };
 
   render() {
@@ -35,7 +35,7 @@ LoginPage.propTypes = {
 const mapStateToProps = state => state.account.login;
 
 const mapDispatchToProps = dispatch => ({
-  login: (email, password) => dispatch(login(email, password)),
+  login: (userName, password) => dispatch(login(userName, password)),
   resetLogin: () => dispatch(resetLogin())
 });
 

@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { Switch, Route, Redirect } from "react-router";
 import { ConnectedRouter } from "react-router-redux";
 import { store, history } from "./store";
-import { AuthRoute, Account } from "./account/components";
+import { AuthRoute, GuestRoute, Account } from "./account/components";
 import { DashboardPageResolver } from "./dashboard/components";
 import { Page } from "./common/components";
 import registerAuthInterceptor from "./account/services/registerAuthInterceptor";
@@ -15,7 +15,7 @@ registerAuthInterceptor();
 const AppRouter = () => (
   <Page>
     <Route exact path="/dashboard" component={DashboardPageResolver} />
-    <Redirect to="/dashboard" />
+    <Redirect to="/" />
   </Page>
 );
 

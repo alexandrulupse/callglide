@@ -10,7 +10,8 @@ import {
   Grid,
   Segment,
   Form,
-  Input
+  Input,
+  Icon
 } from "semantic-ui-react";
 import { isRequired } from "../../../utils/services/validator";
 import focusFirstInvalidField from "../../../utils/services/focusFirstInvalidField";
@@ -19,20 +20,21 @@ const LoginForm = ({ isLoginFailed, handleSubmit }) => (
   <Grid textAlign="center" style={{ height: "100%" }} verticalAlign="middle">
     <Grid.Column style={{ maxWidth: 450 }}>
       <form onSubmit={handleSubmit} noValidate>
-        <Input placeholder="test" />
-        <Segment stacked>
+        <Segment >
+
           <Header>Log in to Callglide</Header>
-          <Container fluid>
+
             <Field
               fluid
-              name="email"
+              name="userName"
               component={Form.Input}
               icon="user"
               iconPosition="left"
-              placeholder="E-mail address"
+              placeholder="User name"
               type="text"
               validate={[isRequired]}
             />
+            <p/>
             <Field
               fluid
               name="password"
@@ -46,18 +48,20 @@ const LoginForm = ({ isLoginFailed, handleSubmit }) => (
 
             {isLoginFailed && <Message>Invalid login credentials</Message>}
 
-            <Message>
-              <Link to="/account/forgot-password">Forgot your password?</Link>
-            </Message>
-
+            <p/>
             <Button.Group fluid>
-              <Button color="primary" type="submit">
-                Login
+              <Button type="submit" primary>
+								<Icon name="unlock alternate"></Icon>
+                Log in
               </Button>
             </Button.Group>
-          </Container>
+
         </Segment>
+
       </form>
+      <Message>
+        <Link to="/account/forgot-password">Forgot your password?</Link>
+      </Message>
       <Message to="/account/register">
         Not yet a user? Register <Link to="/account/register">here</Link>!
       </Message>

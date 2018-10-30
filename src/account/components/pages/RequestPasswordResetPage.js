@@ -10,8 +10,8 @@ class RequestPasswordResetPage extends PureComponent {
     this.props.resetRequestPasswordReset();
   }
 
-  onSubmit = ({ email }) => {
-    this.props.requestPasswordReset(email);
+  onSubmit = ({ userName }) => {
+    this.props.requestPasswordReset(userName);
   };
 
   render() {
@@ -32,7 +32,7 @@ RequestPasswordResetPage.propTypes = {
 const mapStateToProps = state => state.account.requestPasswordReset;
 
 const mapDispatchToProps = dispatch => ({
-  requestPasswordReset: email => dispatch(requestPasswordReset(email)),
+  requestPasswordReset: userName => dispatch(requestPasswordReset(userName)),
   resetRequestPasswordReset: () => dispatch(resetRequestPasswordReset())
 });
 
